@@ -1,0 +1,31 @@
+{
+  "sdkVersion": "8.0.425",
+  "sdkUrl": "https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.425/dotnet-sdk-8.0.425-win-x64.zip",
+  "sdkSha256": "CD6EB1DF826DD168108E2C427673F9D627B7E0631963EEEDF0FA7AEF0913C53F",
+  "wixVersion": "5.0.2",
+  "vcUrl": "https://download.visualstudio.microsoft.com/download/pr/bd1c8d9d-ba95-4eee-bc6e-df1fcc876373/CC0FF0EB1DC3F5188AE6300FAEF32BF5BEEBA4BDD6E8E445A9184072096B713B/VC_redist.x64.exe",
+  "vcSha256": "CC0FF0EB1DC3F5188AE6300FAEF32BF5BEEBA4BDD6E8E445A9184072096B713B",
+  "engineBuild": "b10549",
+  "engineAssets": [
+    {
+      "name": "cudart-llama-bin-win-cuda-13.3-x64.zip",
+      "browser_download_url": "https://github.com/ggml-org/llama.cpp/releases/download/b10549/cudart-llama-bin-win-cuda-13.3-x64.zip",
+      "digest": "sha256:1462a050eb4c684921ba51dcc4cc488a036674c3e73e9945ee705b854808d03e"
+    },
+    {
+      "name": "llama-b10549-bin-win-cpu-x64.zip",
+      "browser_download_url": "https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-cpu-x64.zip",
+      "digest": "sha256:11d38f2ed878489b2c3d02b3d1a67683c02fbfb3d265876b9ede749a8dff5f1c"
+    },
+    {
+      "name": "llama-b10549-bin-win-cuda-13.3-x64.zip",
+      "browser_download_url": "https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-cuda-13.3-x64.zip",
+      "digest": "sha256:67a1097716a4b4c20b94d248d1b3886fd7b91b73d9af5e0630fd6a25a32309a5"
+    },
+    {
+      "name": "llama-b10549-bin-win-vulkan-x64.zip",
+      "browser_download_url": "https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-vulkan-x64.zip",
+      "digest": "sha256:8e7b0e6382a5bcbf57c79cf54b61483e9f7b26561d4413f28095cdaee256207b"
+    }
+  ]
+}

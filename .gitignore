@@ -1,0 +1,12 @@
+.tools/
+.wix/
+.private/
+runtime/
+dist/
+publish/
+**/bin/
+**/obj/
+*.user
+
+**/__pycache__/
+*.pyc

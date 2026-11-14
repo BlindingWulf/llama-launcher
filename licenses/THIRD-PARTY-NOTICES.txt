@@ -1,0 +1,41 @@
+llama.cpp Launcher 1.0.0 — Third-Party Licenses
+
+Launcher: MIT, see ../LICENSE.
+
+llama.cpp / GGML: b10549, commit b2e5e9b28, MIT.
+Upstream: https://github.com/ggml-org/llama.cpp/tree/b10549
+See llama.cpp-MIT.txt. Official Windows x64 CPU, CUDA 13.3 and Vulkan binaries
+are downloaded from the immutable b10549 release and verified by SHA-256.
+The engine release also incorporates dependencies (including httplib, JSON,
+miniaudio, stb and other vendored components). Their individual upstream
+license notices are preserved in the upstream-vendor subdirectory.
+
+LLVM OpenMP: Apache License 2.0 with LLVM exceptions.
+See LICENSE-LLVM-OpenMP distributed by the upstream engine release.
+
+Microsoft .NET runtime 8.0.28, Windows Forms 8.0.28, System.Management 8.0.0:
+MIT and third-party notices. See dotnet-LICENSE.txt, dotnet-THIRD-PARTY.txt,
+winforms-LICENSE.txt. Self-contained runtime is included.
+https://github.com/dotnet/runtime and https://github.com/dotnet/winforms
+
+NVIDIA CUDA runtime and cuBLAS DLLs, CUDA 13.3 release redistributables:
+NVIDIA CUDA End User License Agreement. Copyright NVIDIA Corporation.
+See NVIDIA-CUDA-EULA.html. Redistributed components are cudart64_13.dll,
+cublas64_13.dll and cublasLt64_13.dll, in object code form with this application.
+No NVIDIA driver or toolkit development installation is redistributed.
+https://docs.nvidia.com/cuda/eula/index.html
+
+Microsoft Visual C++ Redistributable (x64): Microsoft software license terms.
+The official, signed VC_redist.x64.exe is embedded in Setup.exe as a prerequisite.
+It is installed only when not already present. Microsoft maintains this runtime;
+launcher uninstall does not remove a shared Microsoft runtime.
+See Microsoft-VC-License.txt and the prerequisite installer's license resources.
+https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist
+
+WiX Toolset 5.0.2: Microsoft Reciprocal License (MS-RL), including exceptions
+for binaries produced by WiX. See WiX-LICENSE.txt. Build-time tool; the setup
+bootstrapper is the redistributed component. https://github.com/wixtoolset/wix
+
+No GGUF model weights, Qwen Code binaries, conversations, credentials or personal
+configuration are included. Model licenses are the responsibility of each model
+publisher. Optional compatibility uses an existing Qwen installation only.

@@ -1,0 +1,22 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="llama.cpp Launcher" Manufacturer="llama.cpp Launcher" Version="$(var.Version)" UpgradeCode="8B14CCFA-1BFD-4E04-BD1D-AC42E1B6E15D" Scope="perUser" Compressed="yes">
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of llama.cpp Launcher is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+    <Property Id="ARPCOMMENTS" Value="Local GGUF model launcher with bundled recovery engines and an experimental Flash-Next/TurboQuant CUDA runtime." />
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="ProgramsFolder" Name="Programs"><Directory Id="INSTALLFOLDER" Name="LlamaLauncher" /></Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder"><Directory Id="AppMenuFolder" Name="llama.cpp Launcher" /></StandardDirectory>
+    <Feature Id="Main" Title="llama.cpp Launcher" Level="1">
+      <ComponentGroupRef Id="ApplicationFiles" />
+      <Component Directory="AppMenuFolder" Guid="77B80825-6FC8-45C9-86E2-FCE3BBE0A736">
+        <Shortcut Id="StartMenuShortcut" Name="llama.cpp Launcher" Target="[INSTALLFOLDER]LlamaLauncher.exe" WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU" Key="Software\LlamaLauncher" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="RemoveAppMenu" On="uninstall" />
+      </Component>
+    </Feature>
+    <ComponentGroup Id="ApplicationFiles" Directory="INSTALLFOLDER">
+      <Files Include="$(var.PublishDir)\**" />
+    </ComponentGroup>
+  </Package>
+</Wix>

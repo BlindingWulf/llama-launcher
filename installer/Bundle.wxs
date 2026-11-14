@@ -1,0 +1,14 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Bundle Name="llama.cpp Launcher" Manufacturer="llama.cpp Launcher" Version="$(var.Version)" UpgradeCode="388F7577-ED6B-42CD-904A-441D9CBD89E5">
+    <BootstrapperApplication>
+      <bal:WixStandardBootstrapperApplication LicenseFile="$(var.LicenseFile)" Theme="rtfLicense" ShowVersion="yes" SuppressOptionsUI="yes" />
+    </BootstrapperApplication>
+    <Variable Name="LaunchTarget" Type="string" Value="[LocalAppDataFolder]Programs\LlamaLauncher\LlamaLauncher.exe" />
+    <util:RegistrySearch Id="VCRuntimeSearch" Variable="VCRuntimeInstalled" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" Value="Installed" Result="value" Bitness="always64" />
+    <util:RegistrySearch Id="VCRuntimeVersionSearch" Variable="VCRuntimeVersion" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" Value="Version" Result="value" Bitness="always64" />
+    <Chain>
+      <ExePackage Id="VCRuntime" SourceFile="$(var.VCRedist)" PerMachine="yes" Cache="remove" Permanent="yes" InstallCondition="NOT (VCRuntimeInstalled = 1 AND VCRuntimeVersion &gt;= v14.44.35211.0)" Vital="yes" DetectCondition="VCRuntimeInstalled = 1 AND VCRuntimeVersion &gt;= v14.44.35211.0" InstallArguments="/install /quiet /norestart" RepairArguments="/repair /quiet /norestart" />
+      <MsiPackage Id="Launcher" SourceFile="$(var.Package)" Visible="no" Vital="yes" />
+    </Chain>
+  </Bundle>
+</Wix>

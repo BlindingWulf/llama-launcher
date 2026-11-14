@@ -1,0 +1,12 @@
+diff --git a/src/models/qwen4exp.cpp b/src/models/qwen4exp.cpp
+index f97f1552..38b907d7 100644
+--- a/src/models/qwen4exp.cpp
++++ b/src/models/qwen4exp.cpp
+@@ -179,0 +180,4 @@ void llama_model_qwen4exp::load_arch_tensors(llama_model_loader & ml) {
++        // The learned PLE N-gram table is tens of GiB in Flash-Next models, while
++        // each decode step gathers only a handful of rows.  Keep it mmap-backed
++        // and let the loader's lazy tensor path fault in just those rows instead
++        // of prefetching the complete table into the Windows working set.
+@@ -181 +185 @@ void llama_model_qwen4exp::load_arch_tensors(llama_model_loader & ml) {
+-                                           { hparams.ple_head_dim, ple_rows }, 0);
++                                           { hparams.ple_head_dim, ple_rows }, TENSOR_READ_LAZY);
