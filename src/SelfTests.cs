@@ -509,7 +509,8 @@ public static class SelfTests
                 && basaltArgs[basaltArgs.IndexOf("--max-context") + 1] == "65536"
                 && basaltArgs[basaltArgs.IndexOf("--spec") + 1] == "8"
                 && basaltArgs[basaltArgs.IndexOf("--port") + 1] == "8123"
-                && basaltArgs[basaltArgs.IndexOf("--api-key") + 1] == "fixture-key");
+                && basaltArgs[basaltArgs.IndexOf("--api-key") + 1] == "fixture-key"
+                && basaltArgs[basaltArgs.IndexOf("--conversation-cache-disk-mib") + 1] == Basalt.ConversationCacheDiskMib.ToString());
             string badBasaltPack = Path.Combine(root, "incomplete.basalt");
             File.Copy(basaltPack, badBasaltPack);
             using (var fs = new FileStream(badBasaltPack, FileMode.Open, FileAccess.Write))

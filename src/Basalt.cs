@@ -113,6 +113,13 @@ public static class Basalt
             "--alias", p.Alias, "--host", "127.0.0.1", "--port", s.Port.ToString(CultureInfo.InvariantCulture),
             "--api-key", s.ApiKey, "--gpu", "0", "--vision", "dynamic", "--max-context",
             p.Options.I("ContextSize").ToString(CultureInfo.InvariantCulture), "--kv", kv, "--spec", "8",
-            "--parallel", Math.Clamp(p.Options.I("PolyParallelSlots", 1), 1, 8).ToString(CultureInfo.InvariantCulture) };
+            "--parallel", Math.Clamp(p.Options.I("PolyParallelSlots", 1), 1, 8).ToString(CultureInfo.InvariantCulture),
+            // Park long conversations (8,192+ tokens) on disk when another request takes the slot, and read them
+            // back instead of re-reading the whole prompt. Apps such as Qwen Code send side requests (memory,
+            // titles) between turns; without this each one forced a full re-read of a 50-75k token context
+            // (7-40 s to first token). The disk tier, in Basalt's model cache folder, leaves the RAM the expert
+            // weights need untouched, keeps 4 GiB of the drive free, and also survives a restart.
+            "--conversation-cache-disk-mib", ConversationCacheDiskMib.ToString(CultureInfo.InvariantCulture) };
     }
+    public const int ConversationCacheDiskMib = 24576;
 }
